@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>555</title>
+    <script src="./explain.min.js"></script>
+    <script src="./vue.compile.js"></script>
+    <script src="./md5.compile.js"></script>
+    <title>md5-vue</title>
 </head>
+
 <body>
-    <button>111</button>
+    <div id="app">
+        <input type="text" v-model="inputText">
+        <b>{{ md5Value }}</b>
+    </div>
 </body>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                inputText: ""
+            }
+        },
+        computed: {
+            md5Value() {
+                return this.inputText && md5(this.inputText)
+            }
+        }
+    })
+</script>
+
 </html>
